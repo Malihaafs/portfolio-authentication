@@ -37,5 +37,7 @@ exports.loginUser = async (req, res) => {
 
 // Login   => /list [Get]
 exports.userList = async (req, res) => {
-    res.render('users/index');    
+    const users = await User.find().sort({ username: 1 });
+
+    res.render('users/index', { users });    
 };
