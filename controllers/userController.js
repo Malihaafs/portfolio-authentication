@@ -35,6 +35,18 @@ exports.loginUser = async (req, res) => {
     }    
 };
 
+// Logout       => /logout [Get]
+exports.logoutUser = async(req, res) => {
+    const { loggedIn } = req?.session;
+
+    if(loggedIn) {
+        req.session.loggedIn = false;
+        req.session.username = null;
+    }
+    
+    res.redirect('/user/login/');
+};
+
 // User List    => /list [Get]
 exports.userList = async (req, res) => {
     const users = await User.find().sort({ contact_name: 1 });
