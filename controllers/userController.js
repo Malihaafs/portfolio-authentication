@@ -26,7 +26,16 @@ exports.loginUser = async (req, res) => {
         if(!isPasswordMatched) {
             res.send('Invalid Email or Password');
         } else {
-            res.redirect('/home');
+            // Set Session after validation Login
+            req.session.loggedIn = true;
+            req.session.username = username;
+
+            res.redirect('/user/');
         }
     }    
+};
+
+// Login   => /list [Get]
+exports.userList = async (req, res) => {
+    res.render('users/index');    
 };

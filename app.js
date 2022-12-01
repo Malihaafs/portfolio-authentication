@@ -1,7 +1,19 @@
 const express = require('express');
 const path = require('path');
 const bodyParser = require('body-parser');
+const session = require('express-session');
+
 const app = express();
+
+// Use session on express app
+app.use(session({
+	secret: 'secret',
+	resave: true,
+	saveUninitialized: true
+}));
+
+// Use JSON on Express app
+app.use(express.json());
 
 // Include body parser on express app
 app.use(bodyParser.urlencoded({ extended: false }));
