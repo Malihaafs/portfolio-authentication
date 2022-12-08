@@ -1,3 +1,10 @@
+/*
+file name: app.js
+author: Maliha Afsa
+student num: 301223227
+web app name: Comp 229 Midterm
+*/
+
 const express = require('express');
 const path = require('path');
 const bodyParser = require('body-parser');
